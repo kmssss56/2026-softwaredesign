@@ -1,0 +1,22 @@
+# Mac
+.DS_Store
+
+# 환경변수 (절대 올리면 안됨!)
+*.env
+application-secret.yml
+
+# Gradle
+.gradle/
+build/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Java
+*.class
+*.jar
+*.war
+out/
