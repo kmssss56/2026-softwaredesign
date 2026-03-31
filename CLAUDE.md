@@ -26,7 +26,7 @@ cd backend
 ./gradlew bootRun      # 개발 서버 실행 (localhost:8080)
 ./gradlew build        # 빌드
 ./gradlew test         # 전체 테스트 실행
-./gradlew test --tests "com.school.management.SomeTest"  # 단일 테스트
+./gradlew test --tests "com.school.management.domain.auth.AuthServiceTest"  # 단일 테스트 (패키지.클래스명)
 ./gradlew clean build  # 클린 빌드
 ```
 
@@ -73,3 +73,11 @@ com.school.management
   - 고등학교: A~E 등급, 석차등급 1~9등급
 - **DB 마이그레이션**: Flyway 사용, DDL auto는 `validate` (직접 스키마 변경 금지, 반드시 migration 파일 작성)
 - **API 문서**: SpringDoc OpenAPI (Swagger), 컨트롤러에 어노테이션 추가 필요
+- **DB 마이그레이션 파일 위치**: `backend/src/main/resources/db/migration/` (파일명: `V{버전}__{설명}.sql`)
+
+## 외부 서비스 설정 (application-secret.yml)
+- `DB_PASSWORD`: PostgreSQL 비밀번호
+- `REDIS_PASSWORD`: Redis 비밀번호 (기본값: redis1234)
+- `JWT_SECRET`: JWT 서명 키
+- AWS 자격증명 (S3, SES 사용 시)
+- Firebase 서비스 계정 키 (FCM 사용 시)
