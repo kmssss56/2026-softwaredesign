@@ -7,5 +7,5 @@ CREATE TABLE attendance (
     note TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    is_deleted BOOOLEAN NOT NULL DEFAULT FALSE
+    is_deleted BOOLEAN NOT NULL DEFAULT FALSE
 );
