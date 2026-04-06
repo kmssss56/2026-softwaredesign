@@ -39,4 +39,15 @@ public class Student extends BaseEntity {
         this.classNum = classNum;
         this.number = number;
     }
+
+    public void update(String name, Integer grade, Integer classNum, Integer number) {
+        this.name = name;
+        this.grade = grade;
+        this.classNum = classNum;
+        this.number = number;
+    }
+
+    public void delete() {
+        this.isDeleted = true;
+    }
 }
