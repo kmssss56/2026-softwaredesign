@@ -20,3 +20,6 @@ build/
 *.jar
 *.war
 out/
+
+# 개인 진행상황 메모
+TODO.md
