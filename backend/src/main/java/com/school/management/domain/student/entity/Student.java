@@ -32,19 +32,25 @@ public class Student extends BaseEntity {
     @Column(nullable = false)
     private Integer number;
 
-    public Student(User user, String name, Integer grade, Integer classNum, Integer number) {
+    // MIDDLE / HIGH (V9: ALTER TABLE student ADD COLUMN school_type)
+    @Column(nullable = false, length = 10)
+    private String schoolType;
+
+    public Student(User user, String name, Integer grade, Integer classNum, Integer number, String schoolType) {
         this.user = user;
         this.name = name;
         this.grade = grade;
         this.classNum = classNum;
         this.number = number;
+        this.schoolType = schoolType;
     }
 
-    public void update(String name, Integer grade, Integer classNum, Integer number) {
+    public void update(String name, Integer grade, Integer classNum, Integer number, String schoolType) {
         this.name = name;
         this.grade = grade;
         this.classNum = classNum;
         this.number = number;
+        this.schoolType = schoolType;
     }
 
     public void delete() {

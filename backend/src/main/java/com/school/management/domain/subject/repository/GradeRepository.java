@@ -14,4 +14,7 @@ public interface GradeRepository extends JpaRepository<Grade, Long> {
     // 학생 + 과목 통계로 성적 조회
     Optional<Grade> findByStudentIdAndClassStatisticIdAndIsDeletedFalse(
             Long studentId, Long classStatisticId);
+
+    // 같은 반 + 과목 통계 기준 전체 성적 (석차등급 계산용)
+    List<Grade> findAllByClassStatisticIdAndIsDeletedFalse(Long classStatisticId);
 }

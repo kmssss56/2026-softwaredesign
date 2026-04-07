@@ -1,7 +1,7 @@
 package com.school.management.domain.subject.controller;
 
-import com.google.protobuf.Api;
 import com.school.management.domain.subject.dto.GradeCreateRequest;
+import com.school.management.domain.subject.dto.GradeUpdateRequest;
 import com.school.management.domain.subject.entity.Grade;
 import com.school.management.domain.subject.entity.SemesterSummary;
 import com.school.management.domain.subject.service.GradeService;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -42,6 +41,24 @@ public class GradeController {
             @PathVariable Long studentId) {
         return ResponseEntity.ok(ApiResponse.success("성적 조회 성공",
                 gradeService.getStudentGrades(studentId)));
+    }
+
+    // 성적 수정
+    @PutMapping("/{gradeId}")
+    @PreAuthorize("hasAnyRole('TEACHER', 'ADMIN')")
+    public ResponseEntity<ApiResponse<Void>> updateGrade(
+            @PathVariable Long gradeId,
+            @RequestBody GradeUpdateRequest request) {
+        gradeService.updateGrade(gradeId, request.getRawScore());
+        return ResponseEntity.ok(ApiResponse.success("성적 수정 성공"));
+    }
+
+    // 성적 삭제
+    @DeleteMapping("/{gradeId}")
+    @PreAuthorize("hasAnyRole('TEACHER', 'ADMIN')")
+    public ResponseEntity<ApiResponse<Void>> deleteGrade(@PathVariable Long gradeId) {
+        gradeService.deleteGrade(gradeId);
+        return ResponseEntity.ok(ApiResponse.success("성적 삭제 성공"));
     }
 
     // 학기 요약 조회
