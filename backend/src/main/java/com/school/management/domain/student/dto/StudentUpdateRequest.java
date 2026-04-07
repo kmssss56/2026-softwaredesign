@@ -8,4 +8,5 @@ public class StudentUpdateRequest {
     private Integer grade;
     private Integer classNum;
     private Integer number;
+    private String schoolType; // MIDDLE / HIGH
 }

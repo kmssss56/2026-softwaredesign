@@ -49,7 +49,8 @@ public class StudentService {
                 request.getName(),
                 request.getGrade(),
                 request.getClassNum(),
-                request.getNumber()
+                request.getNumber(),
+                request.getSchoolType()
         );
 
         return StudentResponse.from(studentRepository.save(student));
@@ -61,7 +62,7 @@ public class StudentService {
         Student student = studentRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 학생입니다."));
 
-        student.update(request.getName(), request.getGrade(), request.getClassNum(), request.getNumber());
+        student.update(request.getName(), request.getGrade(), request.getClassNum(), request.getNumber(), request.getSchoolType());
 
         return StudentResponse.from(student);
     }

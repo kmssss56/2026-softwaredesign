@@ -37,22 +37,30 @@ public class SemesterSummary extends BaseEntity {
     @Column
     private Integer ranking;
 
+    // 고등학교 평균 석차등급: Σ(석차등급 × 이수단위) / Σ(이수단위), RELATIVE 과목만 포함
+    // 중학교는 석차등급 없으므로 null
+    @Column(precision = 4, scale = 2)
+    private BigDecimal averageRankGrade;
+
     public SemesterSummary(Student student, String semester, Integer totalCredits,
-                           BigDecimal totalScore, BigDecimal averageScore, Integer ranking) {
+                           BigDecimal totalScore, BigDecimal averageScore,
+                           Integer ranking, BigDecimal averageRankGrade) {
         this.student = student;
         this.semester = semester;
         this.totalCredits = totalCredits;
         this.totalScore = totalScore;
         this.averageScore = averageScore;
         this.ranking = ranking;
+        this.averageRankGrade = averageRankGrade;
     }
 
     public void update(Integer totalCredits, BigDecimal totalScore,
-                       BigDecimal averageScore, Integer ranking) {
+                       BigDecimal averageScore, Integer ranking, BigDecimal averageRankGrade) {
         this.totalCredits = totalCredits;
         this.totalScore = totalScore;
         this.averageScore = averageScore;
         this.ranking = ranking;
+        this.averageRankGrade = averageRankGrade;
     }
 
     public void delete() {
